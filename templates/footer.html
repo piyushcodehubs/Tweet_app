@@ -1,6 +1,12 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
 <footer>
     <p>© 2026 Tweet App. All rights reserved.</p>
 
-    <a href="#">About</a>
+    <a href="{% url 'make_tweet' %}">About</a>
     <a href="#">Contact</a>
 </footer>

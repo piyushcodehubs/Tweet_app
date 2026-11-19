@@ -1,0 +1,50 @@
+
+/* Footer Styling */
+footer {
+    background: #15202b;
+    color: #ffffff;
+    padding: 25px 20px;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Footer Paragraph */
+footer p {
+    font-size: 14px;
+    color: #aab8c2;
+    margin-bottom: 12px;
+}
+
+/* Footer Links */
+footer a {
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 12px;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect */
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Responsive Footer */
+@media (max-width: 600px) {
+    footer {
+        padding: 20px 10px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+
+    footer a {
+        font-size: 13px;
+        margin: 0 8px;
+    }
+}

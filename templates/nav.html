@@ -1,7 +1,12 @@
-<nav>
+{% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+{% endblock %}
+
+<nav>
     <a href="/">Home</a>
-    <a href="#">Profile</a>
+    <a href="{% url 'make_tweet' %}">Create a Tweet</a>
     <a href="#">Notifications</a>
     <a href="#">Login</a>
 </nav>

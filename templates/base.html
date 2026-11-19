@@ -1,17 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>
         {% block title %}Tweet App{% endblock %}
     </title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}
+    {% endblock %}
 </head>
 <body>
 
     {% include 'nav.html' %}
 
-    {% block content %}
-    {% endblock %}
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     {% include 'footer.html' %}
+
 </body>
 </html>

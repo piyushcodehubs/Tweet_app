@@ -1,11 +1,61 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}
-Home | Tweet App
+{% block title %}Home | Tweet App{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<h1>Welcome to Tweet App</h1>
+<div class="home-container">
+
+    <h1>Latest Tweets</h1>
+
+    {% for tweet in tweets %}
+
+    <div class="tweet-card">
+
+        <div class="tweet-header">
+            <div class="profile-icon">
+                {{ tweet.user.username|first|upper }}
+            </div>
+
+            <div class="user-info">
+                <h3>{{ tweet.user.username }}</h3>
+                <small>{{ tweet.created_at|date:"M d, Y - h:i A" }}</small>
+            </div>
+        </div>
+
+        <div class="tweet-content">
+            <p>{{ tweet.text }}</p>
+        </div>
+
+        {% if tweet.photo %}
+        <div class="tweet-image">
+            <img src="{{ tweet.photo.url }}" alt="Tweet Image">
+        </div>
+        {% endif %}
+
+        <div class="tweet-footer">
+            <span>❤️ Like</span>
+            <span>💬 Comment</span>
+            <span>↗ Share</span>
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="empty-message">
+        <h2>No Tweets Yet!</h2>
+        <p>Be the first one to share something.</p>
+    </div>
+
+    {% endfor %}
+
+</div>
 
 {% endblock %}

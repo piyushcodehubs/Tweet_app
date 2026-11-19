@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Tweet | Tweet App{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/make_tweet.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="create-container">
+
+    <div class="create-card">
+
+        <h1>Create a Tweet</h1>
+        <p class="subtitle">Share what's happening with you!</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <label for="text">What's on your mind?</label>
+
+            <textarea
+                name="text"
+                id="text"
+                placeholder="Write your tweet here..."
+                maxlength="240"
+                required
+            ></textarea>
+
+            <div class="character-count">
+                Maximum 240 characters
+            </div>
+
+            <label for="photo">Upload Photo</label>
+
+            <div class="upload-box">
+                <input
+                    type="file"
+                    name="photo"
+                    id="photo"
+                    accept="image/*"
+                >
+                <p>Choose a photo to upload</p>
+            </div>
+
+            <button type="submit" class="tweet-btn">
+                🐦 Post Tweet
+            </button>
+
+        </form>
+
+        <a href="{% url 'home' %}" class="back-link">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
