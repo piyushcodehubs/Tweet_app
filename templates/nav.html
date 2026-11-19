@@ -6,7 +6,25 @@
 
 <nav>
     <a href="/">Home</a>
-    <a href="{% url 'make_tweet' %}">Create a Tweet</a>
     <a href="#">Notifications</a>
-    <a href="#">Login</a>
+    
+    {% if user.is_authenticated %}
+
+        <span>Welcome, {{ user.username }}</span>
+
+        <a href="{% url 'make_tweet' %}">Create Tweet</a>
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+
+    {% endif %}
+
+
 </nav>

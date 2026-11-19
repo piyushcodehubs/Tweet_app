@@ -1,8 +1,8 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Home | Tweet App{% endblock %}
-
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
@@ -44,6 +44,14 @@
             <span>💬 Comment</span>
             <span>↗ Share</span>
         </div>
+
+        {% if request.user == tweet.user %}
+        <div class="tweet-actions">
+            <a href="{% url 'tweet_edit' tweet.id %}">✏️ Edit</a>
+
+            <a href="{% url 'tweet_delete' tweet.id %}">🗑️ Delete</a>
+        </div>
+        {% endif %}
 
     </div>
 

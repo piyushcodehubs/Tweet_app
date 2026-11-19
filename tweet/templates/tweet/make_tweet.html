@@ -13,50 +13,18 @@
 
     <div class="create-card">
 
-        <h1>Create a Tweet</h1>
-        <p class="subtitle">Share what's happening with you!</p>
-
+        <h2>
+            {% if form.instance.pk %}
+            Edit TWeet 
+            {% else %} 
+            Create tweet 
+            {% endif %}
+        </h2> 
         <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-
-            <label for="text">What's on your mind?</label>
-
-            <textarea
-                name="text"
-                id="text"
-                placeholder="Write your tweet here..."
-                maxlength="240"
-                required
-            ></textarea>
-
-            <div class="character-count">
-                Maximum 240 characters
-            </div>
-
-            <label for="photo">Upload Photo</label>
-
-            <div class="upload-box">
-                <input
-                    type="file"
-                    name="photo"
-                    id="photo"
-                    accept="image/*"
-                >
-                <p>Choose a photo to upload</p>
-            </div>
-
-            <button type="submit" class="tweet-btn">
-                🐦 Post Tweet
-            </button>
+        {% csrf_token %}
+            {{ form.as_p }}
+            <button>submit</button>
 
         </form>
-
-        <a href="{% url 'home' %}" class="back-link">
-            ← Back to Home
-        </a>
-
-    </div>
-
-</div>
-
+        <a href="{% url 'home' %}"><-back-to-home</a>
 {% endblock %}
